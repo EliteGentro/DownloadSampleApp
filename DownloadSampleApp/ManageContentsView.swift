@@ -86,7 +86,7 @@ struct ManageContentsView: View {
                     LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())]) {
                         ForEach(filteredContents) { content in
                             // Navigate to detailed content view on tap
-                            NavigationLink(destination: ContentDetailAdminView(content: content)) {
+                            NavigationLink(destination: ContentDetailView(content: content)) {
                                 ZStack(alignment: .topTrailing) {
                                     MenuCellView(
                                         systemName: content.resourceType == "video" ? "video.fill" : "book.fill",
@@ -111,7 +111,7 @@ struct ManageContentsView: View {
                 .padding(20)
             }
         }
-        .navigationTitle("Contenidos de Aprendizaje")
+        .navigationTitle("Learning Content")
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
             // Check download status when view appears

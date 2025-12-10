@@ -1,5 +1,5 @@
 //
-//  ContentDetailAdminView.swift
+//  ContentDetailView.swift
 //  Coffey
 //
 //  Created by Humberto Genaro Cisneros Salinas on 21/10/25.
@@ -10,7 +10,7 @@
 import SwiftUI
 import SwiftData
 
-struct ContentDetailAdminView: View {
+struct ContentDetailView: View {
     @Environment(\.modelContext) var context
     @EnvironmentObject var downloadManager: DownloadManager
     
@@ -30,7 +30,7 @@ struct ContentDetailAdminView: View {
                 VStack(alignment: .leading, spacing: 8) {
                     Text(content.resourceType.capitalized)
                         .font(.headline)
-                    Link("Vista Previa", destination: URL(string: content.url)!)
+                    Link("Preview", destination: URL(string: content.url)!)
                         .font(.headline)
                     Text(content.details)
                         .font(.body)
@@ -56,7 +56,7 @@ struct ContentDetailAdminView: View {
                             HStack {
                                 Image(systemName: "arrow.down.circle.fill")
                                     .font(.title)
-                                Text("Descargar")
+                                Text("Download")
                                     .font(.largeTitle)
                             }
                             .padding()
@@ -79,7 +79,7 @@ struct ContentDetailAdminView: View {
                         HStack {
                             Image(systemName: "play.circle.fill")
                                 .font(.title2)
-                            Text("Ver")
+                            Text("View")
                                 .font(.title3).bold()
                         }
                         .padding()
@@ -95,7 +95,7 @@ struct ContentDetailAdminView: View {
                         HStack {
                             Image(systemName: "trash.fill")
                                 .font(.title2)
-                            Text("Borrar")
+                            Text("Delete")
                                 .font(.title3).bold()
                         }
                         .padding()
@@ -127,7 +127,7 @@ struct ContentDetailAdminView: View {
     let container = try! ModelContainer(for: Content.self)
     let mockManager = DownloadManager(modelContainer: container)
     
-    ContentDetailAdminView(content: Content.mockContents.first!)
+    ContentDetailView(content: Content.mockContents.first!)
         .modelContainer(container)
         .environmentObject(mockManager)
 }
